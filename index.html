@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Joyce Milane — Endodontia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #121316;
+    --panel: #1b1d21;
+    --panel-2: #202226;
+    --line: #3a3d42;
+    --chrome-hi: #edeff2;
+    --chrome-mid: #9ca0a6;
+    --chrome-dim: #5a5e64;
+    --font-display: 'IBM Plex Mono', 'Consolas', monospace;
+    --font-body: 'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--chrome-hi);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--chrome-mid); color: var(--bg); }
+
+  :focus-visible {
+    outline: 2px solid var(--chrome-hi);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: 96px 0 72px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(720px, 90%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+  }
+
+  .bust {
+    width: clamp(140px, 22vw, 200px);
+    margin: 0 auto 36px;
+    display: block;
+  }
+
+  .portrait {
+    width: clamp(200px, 32vw, 300px);
+    aspect-ratio: 4 / 5;
+    margin: 0 auto 36px;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px var(--line),
+      0 24px 48px -24px rgba(0,0,0,0.65),
+      0 0 70px -12px rgba(156,160,166,0.18);
+  }
+
+  .portrait-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    background:
+      radial-gradient(120% 95% at 50% 38%, transparent 48%, rgba(18,19,22,0.55) 88%, rgba(18,19,22,0.85) 100%),
+      linear-gradient(180deg, rgba(18,19,22,0.35) 0%, transparent 18%, transparent 78%, rgba(18,19,22,0.4) 100%);
+    pointer-events: none;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.8rem, 8vw, 5.2rem);
+    line-height: 1;
+    margin: 0;
+    background: linear-gradient(180deg, #f6f7f9 0%, #c6cad0 42%, #eef0f2 54%, #90959c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 0;
+  }
+
+  .hero-role {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--chrome-mid);
+    margin: 14px 0 0;
+  }
+
+  .hero-lede {
+    max-width: 46ch;
+    margin: 24px auto 0;
+    font-size: 1.05rem;
+    color: var(--chrome-hi);
+    opacity: 0.85;
+  }
+
+  .social-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0 0;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .social-link img {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .social-link:hover,
+  .social-link:focus-visible {
+    border-color: var(--chrome-mid);
+    background: var(--panel-2);
+    transform: translateY(-2px);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 36px;
+    padding: 16px 38px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #f6f7f9 0%, #c6cad0 42%, #eef0f2 54%, #90959c 100%);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.98rem;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow:
+      0 12px 32px -10px rgba(198,202,208,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  }
+
+  .hero-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%);
+    transform: translateX(-140%);
+    transition: transform 0.65s ease;
+  }
+
+  .hero-cta:hover,
+  .hero-cta:focus-visible {
+    transform: translateY(-3px);
+    filter: brightness(1.06);
+    box-shadow:
+      0 18px 40px -10px rgba(198,202,208,0.7),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+
+  .hero-cta:hover::before,
+  .hero-cta:focus-visible::before {
+    transform: translateX(140%);
+  }
+
+  /* ---------- Sections ---------- */
+
+  section { padding: 72px 0; }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    margin: 0 0 20px;
+    letter-spacing: 0.005em;
+  }
+
+  .prose {
+    max-width: 62ch;
+  }
+
+  .prose p {
+    color: var(--chrome-mid);
+    font-size: 1.02rem;
+    margin: 0 0 16px;
+  }
+
+  .prose p:last-child { margin-bottom: 0; }
+
+  .prose strong { color: var(--chrome-hi); font-weight: 600; }
+
+  /* ---------- Unidades ---------- */
+
+  #unidades { border-top: 1px solid var(--line); }
+
+  .units-intro {
+    max-width: 56ch;
+    color: var(--chrome-mid);
+    margin: 0 0 40px;
+  }
+
+  .unit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .unit-plate {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 28px 26px;
+    min-height: 168px;
+    background: linear-gradient(155deg, var(--panel-2) 0%, var(--panel) 55%, #17181b 100%);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .unit-plate::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+    transform: translateX(-120%);
+    transition: transform 0.6s ease;
+  }
+
+  .unit-plate:hover::before,
+  .unit-plate:focus-visible::before {
+    transform: translateX(120%);
+  }
+
+  .unit-plate:hover,
+  .unit-plate:focus-visible {
+    border-color: var(--chrome-mid);
+    transform: translateY(-2px);
+  }
+
+  .unit-region {
+    font-size: 0.85rem;
+    color: var(--chrome-dim);
+    text-transform: none;
+  }
+
+  .unit-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 2.3vw, 1.5rem);
+    line-height: 1.2;
+    color: var(--chrome-hi);
+    letter-spacing: 0.01em;
+  }
+
+  .unit-action {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #f6f7f9 0%, #c6cad0 42%, #eef0f2 54%, #90959c 100%);
+    color: var(--bg);
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px -8px rgba(198,202,208,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+
+  .unit-plate:hover .unit-action,
+  .unit-plate:focus-visible .unit-action {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    box-shadow: 0 10px 24px -8px rgba(198,202,208,0.65), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+
+  .unit-action-icon { width: 16px; height: 16px; flex-shrink: 0; display: block; }
+
+  @media (max-width: 620px) {
+    .unit-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 0 56px;
+    text-align: center;
+    color: var(--chrome-dim);
+    font-size: 0.92rem;
+  }
+
+  footer .foot-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--chrome-mid);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .unit-plate::before { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="portrait">
+        <img class="portrait-img" src="drajoyce.jpg" alt="Dra. Joyce Milane, especialista em endodontia">
+      </div>
+
+      <h1 class="hero-name">Dra.Joyce Milane</h1>
+      <p class="hero-role">Sorrir muda o seu dia</p>
+
+      <div class="social-row">
+        <a class="social-link" href="https://www.instagram.com/drajoycemilane/" target="_blank" rel="noopener" aria-label="Instagram da Dra. Joyce Milane">
+          <img src="icones/instagram.png" alt="Instagram">
+        </a>
+        <!-- TODO: substituir href pelo link real do WhatsApp -->
+        <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="WhatsApp da Dra. Joyce Milane">
+          <img src="icones/whatsapp.png" alt="WhatsApp">
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/in/joycemilane/" target="_blank" rel="noopener" aria-label="LinkedIn da Dra. Joyce Milane">
+          <img src="icones/linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+
+      <a class="hero-cta" href="#unidades">Faça o seu agendamento</a>
+    </div>
+  </header>
+
+  
+
+  <section id="unidades">
+    <div class="wrap">
+      <h2 class="section-heading">Escolha a unidade mais perto de você</h2>
+      <p class="units-intro">Toque em uma unidade para abrir o WhatsApp com uma mensagem de agendamento já pronta.</p>
+
+      <div class="unit-grid">
+        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+        <a class="unit-plate" href="#" target="_blank" rel="noopener"
+           data-phone="5511900000000" data-unit="Odonto Satélite" data-region="São Mateus, São Paulo - SP">
+          <span class="unit-region">São Mateus, SP</span>
+          <span class="unit-name">Odonto<br>Satélite</span>
+          <span class="unit-action">
+            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
+            Agendar no WhatsApp
+          </span>
+        </a>
+
+        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+        <a class="unit-plate" href="#" target="_blank" rel="noopener"
+           data-phone="5511900000000" data-unit="Taynara Fernandes Odontologia Especializada" data-region="Guarulhos - SP">
+          <span class="unit-region">Guarulhos, SP</span>
+          <span class="unit-name">Taynara Fernandes<br>Odontologia Especializada</span>
+          <span class="unit-action">
+            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
+            Agendar no WhatsApp
+          </span>
+        </a>
+
+        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+        <a class="unit-plate" href="#" target="_blank" rel="noopener"
+           data-phone="5511900000000" data-unit="Ateliê Bruna Valentim Odontologia" data-region="Itaquera, São Paulo - SP">
+          <span class="unit-region">Itaquera, SP</span>
+          <span class="unit-name">Ateliê Bruna Valentim<br>Odontologia</span>
+          <span class="unit-action">
+            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
+            Agendar no WhatsApp
+          </span>
+        </a>
+
+        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+        <a class="unit-plate" href="#" target="_blank" rel="noopener"
+           data-phone="5511900000000" data-unit="Clínica Dentária Perus" data-region="Perus, São Paulo - SP">
+          <span class="unit-region">Perus, SP</span>
+          <span class="unit-name">Clínica Dentária<br>Perus</span>
+          <span class="unit-action">
+            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
+            Agendar no WhatsApp
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span class="foot-name">Dra. Joyce Milane</span>
+      <span>Endodontia · São Mateus, Guarulhos, Itaquera e Perus — Grande São Paulo</span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.unit-plate').forEach(function (plate) {
+      var phone = plate.getAttribute('data-phone');
+      var unit = plate.getAttribute('data-unit');
+      var message = 'Olá! Gostaria de agendar uma consulta de endodontia com a Dra. Joyce Milane na unidade ' + unit + '.';
+      plate.setAttribute('href', 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message));
+    });
+  </script>
+
+</body>
+</html>
