@@ -270,29 +270,7 @@
     background: linear-gradient(155deg, var(--panel-2) 0%, var(--panel) 55%, #17181b 100%);
     border: 1px solid var(--line);
     border-radius: 3px;
-    text-decoration: none;
     overflow: hidden;
-    transition: border-color 0.25s ease, transform 0.25s ease;
-  }
-
-  .unit-plate::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
-    transform: translateX(-120%);
-    transition: transform 0.6s ease;
-  }
-
-  .unit-plate:hover::before,
-  .unit-plate:focus-visible::before {
-    transform: translateX(120%);
-  }
-
-  .unit-plate:hover,
-  .unit-plate:focus-visible {
-    border-color: var(--chrome-mid);
-    transform: translateY(-2px);
   }
 
   .unit-region {
@@ -319,14 +297,15 @@
     border-radius: 999px;
     background: linear-gradient(180deg, #f6f7f9 0%, #c6cad0 42%, #eef0f2 54%, #90959c 100%);
     color: var(--bg);
+    text-decoration: none;
     font-size: 0.85rem;
     font-weight: 700;
     box-shadow: 0 8px 20px -8px rgba(198,202,208,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
   }
 
-  .unit-plate:hover .unit-action,
-  .unit-plate:focus-visible .unit-action {
+  .unit-action:hover,
+  .unit-action:focus-visible {
     transform: translateY(-1px);
     filter: brightness(1.06);
     box-shadow: 0 10px 24px -8px rgba(198,202,208,0.65), inset 0 1px 0 rgba(255,255,255,0.6);
@@ -359,7 +338,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .unit-plate::before { transition: none; }
   }
 </style>
 </head>
@@ -396,52 +374,53 @@
   <section id="unidades">
     <div class="wrap">
       <h2 class="section-heading">Escolha a unidade mais perto de você</h2>
-      <p class="units-intro">Toque em uma unidade para abrir o WhatsApp com uma mensagem de agendamento já pronta.</p>
+      <p class="units-intro">Toque em "Agendar no WhatsApp" para abrir uma mensagem de agendamento já pronta.</p>
 
       <div class="unit-grid">
-        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-        <a class="unit-plate" href="#" target="_blank" rel="noopener"
-           data-phone="5511900000000" data-unit="Odonto Satélite" data-region="São Mateus, São Paulo - SP">
+        <div class="unit-plate">
           <span class="unit-region">São Mateus, SP</span>
           <span class="unit-name">Odonto<br>Satélite</span>
-          <span class="unit-action">
+          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+          <a class="unit-action" href="#" target="_blank" rel="noopener"
+             data-phone="5511900000000" data-unit="Odonto Satélite">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
-          </span>
-        </a>
+          </a>
+        </div>
 
-        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-        <a class="unit-plate" href="#" target="_blank" rel="noopener"
-           data-phone="5511900000000" data-unit="Taynara Fernandes Odontologia Especializada" data-region="Guarulhos - SP">
+        <div class="unit-plate">
           <span class="unit-region">Guarulhos, SP</span>
           <span class="unit-name">Taynara Fernandes<br>Odontologia Especializada</span>
-          <span class="unit-action">
+          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+          <a class="unit-action" href="#" target="_blank" rel="noopener"
+             data-phone="5511900000000" data-unit="Taynara Fernandes Odontologia Especializada">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
-          </span>
-        </a>
+          </a>
+        </div>
 
-        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-        <a class="unit-plate" href="#" target="_blank" rel="noopener"
-           data-phone="5511900000000" data-unit="Ateliê Bruna Valentim Odontologia" data-region="Itaquera, São Paulo - SP">
+        <div class="unit-plate">
           <span class="unit-region">Itaquera, SP</span>
           <span class="unit-name">Ateliê Bruna Valentim<br>Odontologia</span>
-          <span class="unit-action">
+          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+          <a class="unit-action" href="#" target="_blank" rel="noopener"
+             data-phone="5511900000000" data-unit="Ateliê Bruna Valentim Odontologia">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
-          </span>
-        </a>
+          </a>
+        </div>
 
         <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-        <a class="unit-plate" href="#" target="_blank" rel="noopener"
-           data-phone="5511900000000" data-unit="Clínica Dentária Perus" data-region="Perus, São Paulo - SP">
+        <div class="unit-plate">
           <span class="unit-region">Perus, SP</span>
           <span class="unit-name">Clínica Dentária<br>Perus</span>
-          <span class="unit-action">
+          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+          <a class="unit-action" href="#" target="_blank" rel="noopener"
+             data-phone="5511900000000" data-unit="Clínica Dentária Perus">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
-          </span>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -454,11 +433,11 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.unit-plate').forEach(function (plate) {
-      var phone = plate.getAttribute('data-phone');
-      var unit = plate.getAttribute('data-unit');
+    document.querySelectorAll('.unit-action').forEach(function (action) {
+      var phone = action.getAttribute('data-phone');
+      var unit = action.getAttribute('data-unit');
       var message = 'Olá! Gostaria de agendar uma consulta de endodontia com a Dra. Joyce Milane na unidade ' + unit + '.';
-      plate.setAttribute('href', 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message));
+      action.setAttribute('href', 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message));
     });
   </script>
 
