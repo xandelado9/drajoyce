@@ -353,7 +353,7 @@
       <p class="hero-role">Sorrir muda o seu dia</p>
 
       <div class="social-row">
-        <a class="social-link" href="https://www.instagram.com/drajoycemilane/" target="_blank" rel="noopener" aria-label="Instagram da Dra. Joyce Milane">
+        <a id="ig-link" class="social-link" href="https://www.instagram.com/drajoycemilane/" target="_blank" rel="noopener" aria-label="Instagram da Dra. Joyce Milane">
           <img src="icones/instagram.png" alt="Instagram">
         </a>
         <!-- TODO: substituir href pelo link real do WhatsApp -->
@@ -439,6 +439,24 @@
       var message = 'Olá! Gostaria de agendar uma consulta de endodontia com a Dra. Joyce Milane na unidade ' + unit + '.';
       action.setAttribute('href', 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message));
     });
+
+    var igLink = document.getElementById('ig-link');
+    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (igLink && isMobile) {
+      igLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        var webUrl = igLink.href;
+        var appUrl = 'instagram://user?username=drajoycemilane';
+        var hidden = false;
+        function onHide() { hidden = true; }
+        document.addEventListener('visibilitychange', onHide);
+        window.location.href = appUrl;
+        setTimeout(function () {
+          document.removeEventListener('visibilitychange', onHide);
+          if (!hidden) window.location.href = webUrl;
+        }, 1200);
+      });
+    }
   </script>
 
 </body>
