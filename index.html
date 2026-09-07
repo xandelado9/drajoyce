@@ -9,19 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   @font-face {
-    font-family: 'Sephora & Hayden';
-    src: url('fontes/SephoraHayden.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
     font-family: 'Miracle';
     src: url('fontes/MiracleHistory.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+  }
+
+  @property --reveal {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
   }
 
   :root {
@@ -32,7 +30,7 @@
     --line: #d6d8db;
     --chrome-hi: #1c1d20;
     --chrome-mid: #44474d;
-    --chrome-dim: #7a7d84;
+    --chrome-dim: #63666d;
     --ink: #17181b;
     --font-display: 'IBM Plex Mono', 'Consolas', monospace;
     --font-body: 'IBM Plex Mono', 'Consolas', monospace;
@@ -85,12 +83,6 @@
     background: linear-gradient(90deg, transparent, var(--line), transparent);
   }
 
-  .bust {
-    width: clamp(140px, 22vw, 200px);
-    margin: 0 auto 36px;
-    display: block;
-  }
-
   .hero-media {
     position: relative;
     width: 100%;
@@ -116,25 +108,68 @@
     pointer-events: none;
   }
 
+  .hero-name-wrap {
+    position: relative;
+    margin: clamp(-130px, -8vw, -40px) 0 0;
+    z-index: 1;
+  }
+
   .hero-name {
     font-family: 'Miracle', var(--font-display);
     font-weight: 700;
     font-size: clamp(2.2rem, 10.5vw, 6.2rem);
     line-height: 1.35;
     padding-bottom: 0.15em;
-    margin: clamp(-130px, -8vw, -40px) 0 0;
-    position: relative;
-    z-index: 1;
+    margin: 0;
     color: var(--chrome-hi);
     background: linear-gradient(180deg, #3a3d42 0%, #17181b 42%, #45484e 54%, #101113 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 0;
+    --reveal: 0%;
+    /* invalid var(--reveal) in browsers without @property support drops the whole
+       mask-image value, so unsupported browsers just render the text unmasked */
+    mask-image: linear-gradient(to bottom, #000 var(--reveal), transparent calc(var(--reveal) + 14%));
+    -webkit-mask-image: linear-gradient(to bottom, #000 var(--reveal), transparent calc(var(--reveal) + 14%));
+    animation: xray-develop 1.5s cubic-bezier(0.16, 0.84, 0.44, 1) 0.25s both;
   }
 
   @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
     .hero-name { color: var(--chrome-hi); background: none; -webkit-text-fill-color: initial; }
+  }
+
+  @keyframes xray-develop {
+    0% {
+      --reveal: 0%;
+      filter: invert(1) contrast(2.6) brightness(1.55) saturate(0);
+    }
+    65% {
+      filter: invert(0.25) contrast(1.5) brightness(1.12) saturate(0.35);
+    }
+    100% {
+      --reveal: 100%;
+      filter: invert(0) contrast(1) brightness(1) saturate(1);
+    }
+  }
+
+  .xray-scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+    box-shadow: 0 0 22px 4px rgba(255, 255, 255, 0.65);
+    opacity: 0;
+    pointer-events: none;
+    animation: xray-scan-move 1.5s cubic-bezier(0.16, 0.84, 0.44, 1) 0.25s both;
+  }
+
+  @keyframes xray-scan-move {
+    0% { top: 0%; opacity: 1; }
+    80% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
   }
 
   .hero-role {
@@ -143,14 +178,6 @@
     font-size: clamp(1.05rem, 2vw, 1.3rem);
     color: var(--chrome-hi);
     margin: 14px 0 0;
-  }
-
-  .hero-lede {
-    max-width: 46ch;
-    margin: 24px auto 0;
-    font-size: 1.05rem;
-    color: var(--chrome-hi);
-    opacity: 0.85;
   }
 
   .social-row {
@@ -272,6 +299,7 @@
   .unit-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    align-items: start;
     gap: 18px;
   }
 
@@ -279,14 +307,19 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 28px;
+    gap: 22px;
     padding: 28px 26px;
-    min-height: 168px;
+    min-height: 160px;
     background: linear-gradient(155deg, var(--panel) 0%, var(--panel-2) 55%, #dcdee1 100%);
     border: 1px solid var(--line);
     border-radius: 3px;
     overflow: hidden;
+  }
+
+  .unit-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .unit-region {
@@ -300,6 +333,7 @@
     font-weight: 700;
     font-size: clamp(1.15rem, 2.3vw, 1.5rem);
     line-height: 1.2;
+    margin: 0;
     color: var(--chrome-hi);
     letter-spacing: 0.01em;
   }
@@ -309,7 +343,7 @@
     align-self: flex-start;
     align-items: center;
     gap: 8px;
-    padding: 9px 18px;
+    padding: 11px 18px;
     border-radius: 999px;
     background: linear-gradient(180deg, #f6f7f9 0%, #c6cad0 42%, #eef0f2 54%, #90959c 100%);
     color: var(--ink);
@@ -352,8 +386,22 @@
     margin-bottom: 2px;
   }
 
+  footer .foot-phone {
+    display: block;
+    margin-top: 10px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+
+    .hero-name {
+      animation: none;
+      mask-image: none;
+      -webkit-mask-image: none;
+      filter: none;
+    }
+
+    .xray-scan { display: none; }
   }
 </style>
 </head>
@@ -364,15 +412,18 @@
       <img class="hero-photo" src="drajoyce.jpg" alt="Dra. Joyce Milane, especialista em endodontia">
     </div>
     <div class="wrap">
-      <h1 class="hero-name">Dra.Joyce Milane</h1>
-      <p class="hero-role">Endodontista - Clinica geral</p>
+      <div class="hero-name-wrap">
+        <h1 class="hero-name">Dra. Joyce Milane</h1>
+        <div class="xray-scan" aria-hidden="true"></div>
+      </div>
+      <p class="hero-role">Endodontista • Clínica Geral</p>
 
       <div class="social-row">
         <a id="ig-link" class="social-link" href="https://www.instagram.com/drajoycemilane/" target="_blank" rel="noopener" aria-label="Instagram da Dra. Joyce Milane">
           <img src="icones/instagram.png" alt="Instagram">
         </a>
-        <!-- TODO: substituir href pelo link real do WhatsApp -->
-        <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="WhatsApp da Dra. Joyce Milane">
+        <!-- TODO: substituir href/data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
+        <a class="social-link" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane." target="_blank" rel="noopener" aria-label="WhatsApp da Dra. Joyce Milane">
           <img src="icones/whatsapp.png" alt="WhatsApp">
         </a>
         <a class="social-link" href="https://www.linkedin.com/in/joycemilane/" target="_blank" rel="noopener" aria-label="LinkedIn da Dra. Joyce Milane">
@@ -393,10 +444,12 @@
 
       <div class="unit-grid">
         <div class="unit-plate">
-          <span class="unit-region">São Mateus, SP</span>
-          <span class="unit-name">Odonto<br>Satélite</span>
+          <div class="unit-info">
+            <span class="unit-region">São Mateus, SP</span>
+            <h3 class="unit-name">Odonto<br>Satélite</h3>
+          </div>
           <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="#" target="_blank" rel="noopener"
+          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Odonto%20Sat%C3%A9lite." target="_blank" rel="noopener"
              data-phone="5511900000000" data-unit="Odonto Satélite">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
@@ -404,10 +457,12 @@
         </div>
 
         <div class="unit-plate">
-          <span class="unit-region">Guarulhos, SP</span>
-          <span class="unit-name">Taynara Fernandes<br>Odontologia Especializada</span>
+          <div class="unit-info">
+            <span class="unit-region">Guarulhos, SP</span>
+            <h3 class="unit-name">Taynara Fernandes<br>Odontologia Especializada</h3>
+          </div>
           <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="#" target="_blank" rel="noopener"
+          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Taynara%20Fernandes%20Odontologia%20Especializada." target="_blank" rel="noopener"
              data-phone="5511900000000" data-unit="Taynara Fernandes Odontologia Especializada">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
@@ -415,10 +470,12 @@
         </div>
 
         <div class="unit-plate">
-          <span class="unit-region">Itaquera, SP</span>
-          <span class="unit-name">Ateliê Bruna Valentim<br>Odontologia</span>
+          <div class="unit-info">
+            <span class="unit-region">Itaquera, SP</span>
+            <h3 class="unit-name">Ateliê Bruna Valentim<br>Odontologia</h3>
+          </div>
           <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="#" target="_blank" rel="noopener"
+          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Ateli%C3%AA%20Bruna%20Valentim%20Odontologia." target="_blank" rel="noopener"
              data-phone="5511900000000" data-unit="Ateliê Bruna Valentim Odontologia">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
@@ -427,10 +484,12 @@
 
         <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
         <div class="unit-plate">
-          <span class="unit-region">Perus, SP</span>
-          <span class="unit-name">Clínica Dentária<br>Perus</span>
+          <div class="unit-info">
+            <span class="unit-region">Perus, SP</span>
+            <h3 class="unit-name">Clínica Dentária<br>Perus</h3>
+          </div>
           <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="#" target="_blank" rel="noopener"
+          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Cl%C3%ADnica%20Dent%C3%A1ria%20Perus." target="_blank" rel="noopener"
              data-phone="5511900000000" data-unit="Clínica Dentária Perus">
             <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
             Agendar no WhatsApp
@@ -444,6 +503,8 @@
     <div class="wrap">
       <span class="foot-name">Dra. Joyce Milane</span>
       <span>Endodontia · São Mateus, Guarulhos, Itaquera e Perus — Grande São Paulo</span>
+      <!-- TODO: substituir pelo número real do WhatsApp -->
+      <span class="foot-phone">WhatsApp: +55 11 90000-0000</span>
     </div>
   </footer>
 
