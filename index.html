@@ -1,539 +1,470 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dra. Joyce Milane — Endodontia</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dra Joyce Milane — Endodontista | Clínica Geral</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  @font-face {
-    font-family: 'Miracle';
-    src: url('fontes/MiracleHistory.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+  html, body { margin: 0; padding: 0; background: #d6dade; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  a { color: #24272b; }
+  a:hover { color: #575c63; }
 
-  @property --reveal {
-    syntax: '<percentage>';
-    inherits: false;
-    initial-value: 0%;
-  }
-
-  :root {
-    --bg: #f1f2f4;
-    --bg-rgb: 241,242,244;
-    --panel: #ffffff;
-    --panel-2: #e7e9ec;
-    --line: #d6d8db;
-    --chrome-hi: #1c1d20;
-    --chrome-mid: #44474d;
-    --chrome-dim: #63666d;
-    --ink: #17181b;
-    --font-display: 'IBM Plex Mono', 'Consolas', monospace;
-    --font-body: 'IBM Plex Mono', 'Consolas', monospace;
-  }
-
-  * { box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--chrome-hi);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a { color: inherit; }
-
-  ::selection { background: var(--chrome-hi); color: var(--bg); }
-
-  :focus-visible {
-    outline: 2px solid var(--chrome-hi);
-    outline-offset: 3px;
-  }
-
-  .wrap {
-    max-width: 1040px;
+  .page {
+    max-width: 480px;
     margin: 0 auto;
-    padding: 0 24px;
+    min-height: 100vh;
+    background: #eef1f3;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    color: #24272b;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(36,39,43,0.12);
   }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .display { font-family: 'Fredoka', system-ui, sans-serif; }
 
   /* ---------- Hero ---------- */
 
-  .hero {
-    padding: 0 0 72px;
-    text-align: center;
-    position: relative;
-  }
-
-  .hero::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    width: min(720px, 90%);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--line), transparent);
-  }
+  .hero { position: relative; }
 
   .hero-media {
     position: relative;
     width: 100%;
-    height: 62vw;
-    min-height: 340px;
-    max-height: 620px;
+    aspect-ratio: 4/5;
     overflow: hidden;
+    background: #dde1e5;
   }
 
   .hero-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 60% 12%;
+    object-position: 58% 18%;
     display: block;
+    filter: saturate(.85) contrast(1.02);
   }
 
-  .hero-media::after {
-    content: "";
+  .hero-fade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, transparent 40%, rgba(var(--bg-rgb),0.75) 78%, var(--bg) 100%);
+    background: linear-gradient(180deg, rgba(238,241,243,0) 48%, rgba(238,241,243,0.7) 76%, #eef1f3 97%);
     pointer-events: none;
   }
 
-  .hero-name-wrap {
+  .corner {
+    position: absolute;
+    top: 18px;
+    width: 22px;
+    height: 22px;
+    border-top: 1.5px solid rgba(255,255,255,0.9);
+  }
+  .corner--l { left: 18px; border-left: 1.5px solid rgba(255,255,255,0.9); }
+  .corner--r { right: 18px; border-right: 1.5px solid rgba(255,255,255,0.9); }
+
+  .hero-text {
     position: relative;
-    margin: clamp(-130px, -8vw, -40px) 0 0;
-    z-index: 1;
+    margin-top: -132px;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .hero-name {
-    font-family: 'Miracle', var(--font-display);
-    font-weight: 700;
-    font-size: clamp(2.2rem, 10.5vw, 6.2rem);
-    line-height: 1.35;
-    padding-bottom: 0.15em;
     margin: 0;
-    color: var(--chrome-hi);
-    background: linear-gradient(180deg, #3a3d42 0%, #17181b 42%, #45484e 54%, #101113 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 0;
-    --reveal: 0%;
-    /* invalid var(--reveal) in browsers without @property support drops the whole
-       mask-image value, so unsupported browsers just render the text unmasked */
-    mask-image: linear-gradient(to bottom, #000 var(--reveal), transparent calc(var(--reveal) + 14%));
-    -webkit-mask-image: linear-gradient(to bottom, #000 var(--reveal), transparent calc(var(--reveal) + 14%));
-    animation: xray-develop 1.5s cubic-bezier(0.16, 0.84, 0.44, 1) 0.25s both;
+    font-weight: 400;
+    color: #1d2024;
+    display: flex;
+    flex-direction: column;
   }
-
-  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-    .hero-name { color: var(--chrome-hi); background: none; -webkit-text-fill-color: initial; }
-  }
-
-  @keyframes xray-develop {
-    0% {
-      --reveal: 0%;
-      filter: invert(1) contrast(2.6) brightness(1.55) saturate(0);
-    }
-    65% {
-      filter: invert(0.25) contrast(1.5) brightness(1.12) saturate(0.35);
-    }
-    100% {
-      --reveal: 100%;
-      filter: invert(0) contrast(1) brightness(1) saturate(1);
-    }
-  }
-
-  .xray-scan {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
-    box-shadow: 0 0 22px 4px rgba(255, 255, 255, 0.65);
-    opacity: 0;
-    pointer-events: none;
-    animation: xray-scan-move 1.5s cubic-bezier(0.16, 0.84, 0.44, 1) 0.25s both;
-  }
-
-  @keyframes xray-scan-move {
-    0% { top: 0%; opacity: 1; }
-    80% { opacity: 1; }
-    100% { top: 100%; opacity: 0; }
-  }
+  .hero-name .dra { font-size: 26px; line-height: 1; margin-bottom: 6px; color: #575c63; }
+  .hero-name .first { font-size: 68px; line-height: .92; letter-spacing: -.02em; }
+  .hero-name .last { font-size: 68px; line-height: .92; letter-spacing: -.02em; padding-left: 44px; }
 
   .hero-role {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: clamp(1.05rem, 2vw, 1.3rem);
-    color: var(--chrome-hi);
-    margin: 14px 0 0;
-  }
-
-  .social-row {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 16px;
-    margin: 24px 0 0;
+    gap: 12px;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    color: #3d4147;
+  }
+  .hero-role .sep { width: 1px; height: 14px; background: #9aa0a7; }
+
+  .instruments {
+    margin: 30px 24px 0;
+    height: 26px;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27168%27%20height%3D%2726%27%20viewBox%3D%270%200%20168%2026%27%20fill%3D%27none%27%20stroke%3D%27%239aa0a7%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cg%20transform%3D%27translate(0%200)%27%3E%3Ccircle%20cx%3D%2714%27%20cy%3D%276.5%27%20r%3D%274%27%2F%3E%3Cpath%20d%3D%27M14%2010.5V24%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(28%200)%27%3E%3Cpath%20d%3D%27M14%2024V8C14%205%2016%203%2018.5%203.5%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(56%200)%27%3E%3Crect%20x%3D%2711%27%20y%3D%272%27%20width%3D%276%27%20height%3D%275%27%20rx%3D%271%27%2F%3E%3Cpath%20d%3D%27M14%207L12.5%2010L15.5%2013L12.5%2016L15.5%2019L14%2024%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(84%200)%27%3E%3Cpath%20d%3D%27M14%201.5V5M10.5%205H17.5M12%205V18H16V5M12%209H14M12%2012H14M12%2015H14M14%2018V24.5%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(112%200)%27%3E%3Cpath%20d%3D%27M11%202C11%2010%2013%2015%2013.6%2024M17%202C17%2010%2015%2015%2014.4%2024M11.6%208H16.4%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(140%200)%27%3E%3Crect%20x%3D%2710%27%20y%3D%272%27%20width%3D%278%27%20height%3D%275.5%27%20rx%3D%271.5%27%2F%3E%3Cpath%20d%3D%27M14%207.5V11M12%2011H16L15%2019H13ZM14%2019V24.5%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: 168px 26px;
   }
 
-  .social-link {
-    display: inline-flex;
+  .instruments--header { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27168%27%20height%3D%2726%27%20viewBox%3D%270%200%20168%2026%27%20fill%3D%27none%27%20stroke%3D%27%239aa0a7%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cg%20transform%3D%27translate(0%200)%27%3E%3Ccircle%20cx%3D%2714%27%20cy%3D%276.5%27%20r%3D%274%27%2F%3E%3Cpath%20d%3D%27M14%2010.5V24%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(28%200)%27%3E%3Cpath%20d%3D%27M14%2024V8C14%205%2016%203%2018.5%203.5%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(56%200)%27%3E%3Crect%20x%3D%2711%27%20y%3D%272%27%20width%3D%276%27%20height%3D%275%27%20rx%3D%271%27%2F%3E%3Cpath%20d%3D%27M14%207L12.5%2010L15.5%2013L12.5%2016L15.5%2019L14%2024%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(84%200)%27%3E%3Cpath%20d%3D%27M14%201.5V5M10.5%205H17.5M12%205V18H16V5M12%209H14M12%2012H14M12%2015H14M14%2018V24.5%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(112%200)%27%3E%3Cpath%20d%3D%27M11%202C11%2010%2013%2015%2013.6%2024M17%202C17%2010%2015%2015%2014.4%2024M11.6%208H16.4%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(140%200)%27%3E%3Crect%20x%3D%2710%27%20y%3D%272%27%20width%3D%278%27%20height%3D%275.5%27%20rx%3D%271.5%27%2F%3E%3Cpath%20d%3D%27M14%207.5V11M12%2011H16L15%2019H13ZM14%2019V24.5%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+  .instruments--footer { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27168%27%20height%3D%2726%27%20viewBox%3D%270%200%20168%2026%27%20fill%3D%27none%27%20stroke%3D%27%236b7077%27%20stroke-width%3D%271.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cg%20transform%3D%27translate(0%200)%27%3E%3Ccircle%20cx%3D%2714%27%20cy%3D%276.5%27%20r%3D%274%27%2F%3E%3Cpath%20d%3D%27M14%2010.5V24%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(28%200)%27%3E%3Cpath%20d%3D%27M14%2024V8C14%205%2016%203%2018.5%203.5%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(56%200)%27%3E%3Crect%20x%3D%2711%27%20y%3D%272%27%20width%3D%276%27%20height%3D%275%27%20rx%3D%271%27%2F%3E%3Cpath%20d%3D%27M14%207L12.5%2010L15.5%2013L12.5%2016L15.5%2019L14%2024%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(84%200)%27%3E%3Cpath%20d%3D%27M14%201.5V5M10.5%205H17.5M12%205V18H16V5M12%209H14M12%2012H14M12%2015H14M14%2018V24.5%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(112%200)%27%3E%3Cpath%20d%3D%27M11%202C11%2010%2013%2015%2013.6%2024M17%202C17%2010%2015%2015%2014.4%2024M11.6%208H16.4%27%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%27translate(140%200)%27%3E%3Crect%20x%3D%2710%27%20y%3D%272%27%20width%3D%278%27%20height%3D%275.5%27%20rx%3D%271.5%27%2F%3E%3Cpath%20d%3D%27M14%207.5V11M12%2011H16L15%2019H13ZM14%2019V24.5%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+
+  .hero-cta { padding: 28px 24px 0; display: flex; flex-direction: column; gap: 14px; }
+
+  .cta {
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 8px 0 24px;
+    border-radius: 999px;
+    background: #c8d0d9;
+    color: #24272b;
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    box-shadow: 0 14px 30px -16px rgba(36,39,43,0.3);
+    transition: transform .15s;
+  }
+  .cta:active { transform: scale(.98); }
+  .cta-arrow {
     width: 44px;
     height: 44px;
-    border-radius: 10px;
-    border: 1px solid var(--line);
-    background: var(--panel);
-    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-  }
-
-  .social-link img {
-    width: 22px;
-    height: 22px;
-    display: block;
-  }
-
-  .social-link:hover,
-  .social-link:focus-visible {
-    border-color: var(--chrome-mid);
-    background: var(--panel-2);
-    transform: translateY(-2px);
-  }
-
-  .hero-cta {
-    display: inline-flex;
+    border-radius: 999px;
+    background: #eef1f3;
+    color: #24272b;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 36px;
-    padding: 16px 38px;
-    border: none;
+    font-size: 18px;
+  }
+
+  /* ---------- Atendimentos ---------- */
+
+  main#atendimentos {
+    margin-top: 56px;
+    padding: 44px 16px 40px;
+    background: #dde1e5;
+    border-radius: 32px 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-head {
+    padding: 0 8px 12px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .section-head h2 {
+    margin: 0;
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -.01em;
+    color: #1d2024;
+  }
+  .section-head .count {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    color: #9aa0a7;
+  }
+
+  .card {
+    background: #f6f7f8;
+    border-radius: 24px;
+    padding: 22px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 10px 24px -18px rgba(36,39,43,0.35);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-top .index { font-size: 11px; color: #7d838a; letter-spacing: .1em; }
+  .card-top .region {
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    color: #3d4147;
+    padding: 6px 10px;
     border-radius: 999px;
-    background: linear-gradient(180deg, #f6f7f9 0%, #c6cad0 42%, #eef0f2 54%, #90959c 100%);
-    color: var(--ink);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.98rem;
-    letter-spacing: 0.01em;
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    box-shadow:
-      0 14px 30px -12px rgba(20,21,23,0.3),
-      inset 0 1px 0 rgba(255,255,255,0.7);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    background: #e6e9ec;
+    white-space: nowrap;
   }
 
-  .hero-cta::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%);
-    transform: translateX(-140%);
-    transition: transform 0.65s ease;
+  .card-body { display: flex; flex-direction: column; gap: 10px; padding: 0 2px; }
+  .card-body h3 {
+    margin: 0;
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    color: #1d2024;
+    text-wrap: balance;
   }
 
-  .hero-cta:hover,
-  .hero-cta:focus-visible {
-    transform: translateY(-3px);
-    filter: brightness(1.06);
-    box-shadow:
-      0 20px 38px -12px rgba(20,21,23,0.4),
-      inset 0 1px 0 rgba(255,255,255,0.8);
+  .addr { display: flex; gap: 10px; align-items: flex-start; text-decoration: none; color: #575c63; }
+  .addr .pin {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    border-radius: 999px;
+    border: 1.5px solid #575c63;
+  }
+  .addr .text { font-size: 14px; line-height: 1.5; text-wrap: pretty; }
+  .addr .route {
+    color: #24272b;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: #9aa0a7;
+    white-space: nowrap;
   }
 
-  .hero-cta:hover::before,
-  .hero-cta:focus-visible::before {
-    transform: translateX(140%);
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e5e8;
+    border-bottom: none;
+    border-radius: 18px 18px 0 0;
   }
+  .logo img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+  .logo--satelite { height: 148px; padding: 22px 30px; background: #fff; }
+  .logo--anderson { height: 148px; padding: 10px 16px; background: #000; }
+  .logo--valentim { height: 148px; padding: 12px; background: #fff; }
+  .logo--taynara { height: auto; aspect-ratio: 1080/570; padding: 0; background: #3a2a3c; }
+  .logo--taynara img { width: 100%; height: 100%; object-fit: cover; }
+  .logo--perus { height: 148px; padding: 20px 26px; background: #fff; }
 
-  /* ---------- Sections ---------- */
-
-  section { padding: 72px 0; }
-
-  .section-heading {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-    margin: 0 0 20px;
-    letter-spacing: 0.005em;
+  .card-cta { display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #c8d0d9; text-decoration: none; color: #24272b; box-shadow: 0 12px 26px -18px rgba(36,39,43,0.3); transition: transform .15s; }
+  .card-cta:active { transform: scale(.98); }
+  .card-cta .strip { display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 18px; }
+  .card-cta .label { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .card-cta .label .kicker { font-size: 10px; letter-spacing: .14em; color: #4a4f56; }
+  .card-cta .label .name { font-size: 15px; font-weight: 600; line-height: 1.25; }
+  .card-cta .wa {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: #eef1f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .card-cta .wa img { width: 20px; height: 20px; }
 
-  .prose {
-    max-width: 62ch;
-  }
+  .units-note { margin: 6px 0 0; text-align: center; font-size: 10.5px; letter-spacing: .1em; color: #575c63; }
 
-  .prose p {
-    color: var(--chrome-mid);
-    font-size: 1.02rem;
-    margin: 0 0 16px;
-  }
+  /* ---------- Rodapé ---------- */
 
-  .prose p:last-child { margin-bottom: 0; }
-
-  .prose strong { color: var(--chrome-hi); font-weight: 600; }
-
-  /* ---------- Unidades ---------- */
-
-  #unidades { border-top: 1px solid var(--line); }
-
-  .units-intro {
-    max-width: 56ch;
-    color: var(--chrome-mid);
-    margin: 0 0 40px;
-  }
-
-  .unit-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: start;
+  footer {
+    background: #c8d0d9;
+    color: #24272b;
+    padding: 40px 24px calc(48px + env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
     gap: 18px;
   }
 
-  .unit-plate {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    padding: 28px 26px;
-    min-height: 160px;
-    background: linear-gradient(155deg, var(--panel) 0%, var(--panel-2) 55%, #dcdee1 100%);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .unit-info {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .unit-region {
-    font-size: 0.85rem;
-    color: var(--chrome-dim);
-    text-transform: none;
-  }
-
-  .unit-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.15rem, 2.3vw, 1.5rem);
-    line-height: 1.2;
-    margin: 0;
-    color: var(--chrome-hi);
-    letter-spacing: 0.01em;
-  }
-
-  .unit-action {
-    display: inline-flex;
-    align-self: flex-start;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 18px;
-    border-radius: 999px;
-    background: linear-gradient(180deg, #f6f7f9 0%, #c6cad0 42%, #eef0f2 54%, #90959c 100%);
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 700;
-    box-shadow: 0 10px 20px -10px rgba(20,21,23,0.28), inset 0 1px 0 rgba(255,255,255,0.7);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-  }
-
-  .unit-action:hover,
-  .unit-action:focus-visible {
-    transform: translateY(-1px);
-    filter: brightness(1.06);
-    box-shadow: 0 12px 24px -10px rgba(20,21,23,0.38), inset 0 1px 0 rgba(255,255,255,0.8);
-  }
-
-  .unit-action-icon { width: 16px; height: 16px; flex-shrink: 0; display: block; }
-
-  @media (max-width: 620px) {
-    .unit-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ---------- Footer ---------- */
-
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 40px 0 56px;
-    text-align: center;
-    color: var(--chrome-dim);
-    font-size: 0.92rem;
-  }
-
-  footer .foot-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--chrome-mid);
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  footer .foot-phone {
-    display: block;
-    margin-top: 10px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-
-    .hero-name {
-      animation: none;
-      mask-image: none;
-      -webkit-mask-image: none;
-      filter: none;
-    }
-
-    .xray-scan { display: none; }
-  }
+  .foot-id { display: flex; flex-direction: column; gap: 8px; }
+  .foot-name { font-family: 'Fredoka', system-ui, sans-serif; font-size: 32px; line-height: 1; }
+  .foot-name .dra { color: #4a4f56; }
+  .foot-role { font-size: 10.5px; letter-spacing: .14em; color: #4a4f56; }
 </style>
 </head>
 <body>
+<div class="page">
 
   <header class="hero">
     <div class="hero-media">
-      <img class="hero-photo" src="drajoyce.jpg" alt="Dra. Joyce Milane, especialista em endodontia">
+      <img class="hero-photo" src="drajoyce.jpg" alt="Dra Joyce Milane atendendo com microscópio">
+      <div class="hero-fade"></div>
+      <div class="corner corner--l"></div>
+      <div class="corner corner--r"></div>
     </div>
-    <div class="wrap">
-      <div class="hero-name-wrap">
-        <h1 class="hero-name">Dra. Joyce Milane</h1>
-        <div class="xray-scan" aria-hidden="true"></div>
-      </div>
-      <p class="hero-role">Endodontista • Clínica Geral</p>
 
-      <div class="social-row">
-        <a id="ig-link" class="social-link" href="https://www.instagram.com/drajoycemilane/" target="_blank" rel="noopener" aria-label="Instagram da Dra. Joyce Milane">
-          <img src="icones/instagram.png" alt="Instagram">
-        </a>
-        <!-- TODO: substituir href/data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-        <a class="social-link" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane." target="_blank" rel="noopener" aria-label="WhatsApp da Dra. Joyce Milane">
-          <img src="icones/whatsapp.png" alt="WhatsApp">
-        </a>
-        <a class="social-link" href="https://www.linkedin.com/in/joycemilane/" target="_blank" rel="noopener" aria-label="LinkedIn da Dra. Joyce Milane">
-          <img src="icones/linkedin.png" alt="LinkedIn">
-        </a>
+    <div class="hero-text">
+      <h1 class="hero-name display">
+        <span class="dra">Dra</span>
+        <span class="first">Joyce</span>
+        <span class="last">Milane</span>
+      </h1>
+      <div class="hero-role mono">
+        <span>ENDODONTISTA</span>
+        <span class="sep"></span>
+        <span>CLÍNICA GERAL</span>
       </div>
+    </div>
 
-      <a class="hero-cta" href="#unidades">Faça o seu agendamento</a>
+    <div class="instruments instruments--header" aria-hidden="true"></div>
+
+    <div class="hero-cta">
+      <a class="cta" href="#atendimentos">
+        <span>Agende sua consulta</span>
+        <span class="cta-arrow">↓</span>
+      </a>
     </div>
   </header>
 
-  
-
-  <section id="unidades">
-    <div class="wrap">
-      <h2 class="section-heading">Escolha a unidade mais perto de você</h2>
-      <p class="units-intro">Toque em "Agendar no WhatsApp" para abrir uma mensagem de agendamento já pronta.</p>
-
-      <div class="unit-grid">
-        <div class="unit-plate">
-          <div class="unit-info">
-            <span class="unit-region">São Mateus, SP</span>
-            <h3 class="unit-name">Odonto<br>Satélite</h3>
-          </div>
-          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Odonto%20Sat%C3%A9lite." target="_blank" rel="noopener"
-             data-phone="5511900000000" data-unit="Odonto Satélite">
-            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
-            Agendar no WhatsApp
-          </a>
-        </div>
-
-        <div class="unit-plate">
-          <div class="unit-info">
-            <span class="unit-region">Guarulhos, SP</span>
-            <h3 class="unit-name">Taynara Fernandes<br>Odontologia Especializada</h3>
-          </div>
-          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Taynara%20Fernandes%20Odontologia%20Especializada." target="_blank" rel="noopener"
-             data-phone="5511900000000" data-unit="Taynara Fernandes Odontologia Especializada">
-            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
-            Agendar no WhatsApp
-          </a>
-        </div>
-
-        <div class="unit-plate">
-          <div class="unit-info">
-            <span class="unit-region">Itaquera, SP</span>
-            <h3 class="unit-name">Ateliê Bruna Valentim<br>Odontologia</h3>
-          </div>
-          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Ateli%C3%AA%20Bruna%20Valentim%20Odontologia." target="_blank" rel="noopener"
-             data-phone="5511900000000" data-unit="Ateliê Bruna Valentim Odontologia">
-            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
-            Agendar no WhatsApp
-          </a>
-        </div>
-
-        <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-        <div class="unit-plate">
-          <div class="unit-info">
-            <span class="unit-region">Perus, SP</span>
-            <h3 class="unit-name">Clínica Dentária<br>Perus</h3>
-          </div>
-          <!-- TODO: substituir data-phone pelo número real do WhatsApp (com DDI+DDD, só números) -->
-          <a class="unit-action" href="https://wa.me/5511900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20endodontia%20com%20a%20Dra.%20Joyce%20Milane%20na%20unidade%20Cl%C3%ADnica%20Dent%C3%A1ria%20Perus." target="_blank" rel="noopener"
-             data-phone="5511900000000" data-unit="Clínica Dentária Perus">
-            <img class="unit-action-icon" src="icones/whatsapp.png" alt="">
-            Agendar no WhatsApp
-          </a>
-        </div>
-      </div>
+  <main id="atendimentos">
+    <div class="section-head">
+      <h2 class="display">Atendimentos</h2>
+      <span class="count display">05</span>
     </div>
-  </section>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="index mono">01</span>
+        <span class="region mono">SÃO MATEUS</span>
+      </div>
+      <div class="card-body">
+        <h3>Odontologia Satélite</h3>
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Odontologia%20Sat%C3%A9lite%2C%20Av.%20Sat%C3%A9lite%2C%20258%20-%20S%C3%A3o%20Mateus%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008330-480" target="_blank" rel="noopener">
+          <span class="pin"></span>
+          <span class="text">Odontologia Satélite · Av. Satélite, 258 - São Mateus, São Paulo - SP, 08330-480 <span class="route">Ver rota</span></span>
+        </a>
+      </div>
+      <a class="card-cta" href="https://wa.me/5511968317982?text=Gostaria%20de%20um%20agendamento%20com%20a%20Dra%20Joyce%20Milane" target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp na Odontologia Satélite">
+        <span class="logo logo--satelite">
+          <img src="logos/logo-satelite.png" alt="Logo Odontologia Satélite">
+        </span>
+        <span class="strip">
+          <span class="label">
+            <span class="kicker mono">AGENDE SUA CONSULTA</span>
+            <span class="name">Odontologia Satélite</span>
+          </span>
+          <span class="wa"><img src="icones/whatsapp.png" alt=""></span>
+        </span>
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="index mono">02</span>
+        <span class="region mono">SÃO MATEUS</span>
+      </div>
+      <div class="card-body">
+        <h3>Dr Anderson Implantes</h3>
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Dr.%20Anderson%20Oliveira%20Implantes%2C%20Av.%20Sat%C3%A9lite%2C%20238%20-%20Sala%2005%20-%20Cidade%20Satelite%20Santa%20Barbara%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008330-480" target="_blank" rel="noopener">
+          <span class="pin"></span>
+          <span class="text">Dr. Anderson Oliveira Implantes · Av. Satélite, 238 - Sala 05 - Cidade Satelite Santa Barbara, São Paulo - SP, 08330-480 <span class="route">Ver rota</span></span>
+        </a>
+      </div>
+      <a class="card-cta" href="https://wa.me/5511913490770?text=Gostaria%20de%20um%20agendamento%20com%20a%20Dra%20Joyce%20Milane" target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp na Drafo Odonto Especializada">
+        <span class="logo logo--anderson">
+          <img src="logos/logo-anderson.png" alt="Logo Dr. Anderson Oliveira Odontologia Especializada">
+        </span>
+        <span class="strip">
+          <span class="label">
+            <span class="kicker mono">AGENDE SUA CONSULTA</span>
+            <span class="name">Drafo Odonto Especializada</span>
+          </span>
+          <span class="wa"><img src="icones/whatsapp.png" alt=""></span>
+        </span>
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="index mono">03</span>
+        <span class="region mono">ITAQUERA</span>
+      </div>
+      <div class="card-body">
+        <h3>Clínica Odontológica Valentim</h3>
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Cl%C3%ADnica%20Odontol%C3%B3gica%20Valentim%2C%20R.%20Ken%20Sugaya%2C%20473A%20-%20Itaquera%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008210-100" target="_blank" rel="noopener">
+          <span class="pin"></span>
+          <span class="text">Clínica Odontológica Valentim · R. Ken Sugaya, 473A - Itaquera, São Paulo - SP, 08210-100 <span class="route">Ver rota</span></span>
+        </a>
+      </div>
+      <a class="card-cta" href="https://wa.me/5511987240503?text=Gostaria%20de%20um%20agendamento%20com%20a%20Dra%20Joyce%20Milane" target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp na Clínica Odontológica Valentim">
+        <span class="logo logo--valentim">
+          <img src="logos/logo-valentim.png" alt="Logo Valentim Odontologia Estética">
+        </span>
+        <span class="strip">
+          <span class="label">
+            <span class="kicker mono">AGENDE SUA CONSULTA</span>
+            <span class="name">Clínica Odontológica Valentim</span>
+          </span>
+          <span class="wa"><img src="icones/whatsapp.png" alt=""></span>
+        </span>
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="index mono">04</span>
+        <span class="region mono">JD. SANTA HELENA</span>
+      </div>
+      <div class="card-body">
+        <h3>Dra Taynara Fernandes Odontologia Especializada</h3>
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Dra%20Taynara%20Fernandes%20Odontologia%20Especializada%2C%20Estr.%20Velha%20Guarulhos%20S%C3%A3o%20Miguel%2C%20882%20-%20Jardim%20Santa%20Helena" target="_blank" rel="noopener">
+          <span class="pin"></span>
+          <span class="text">Estr. Velha Guarulhos São Miguel, 882 - Jardim Santa Helena <span class="route">Ver rota</span></span>
+        </a>
+      </div>
+      <a class="card-cta" href="https://wa.me/5511981454342?text=Gostaria%20de%20um%20agendamento%20com%20a%20Dra%20Joyce%20Milane" target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp na Dra Taynara Fernandes Odontologia Especializada">
+        <span class="logo logo--taynara">
+          <img src="logos/logo-taynara.png" alt="Logo Dra Taynara Fernandes Odontologia Especializada">
+        </span>
+        <span class="strip">
+          <span class="label">
+            <span class="kicker mono">AGENDE SUA CONSULTA</span>
+            <span class="name">Dra Taynara Fernandes Odontologia Especializada</span>
+          </span>
+          <span class="wa"><img src="icones/whatsapp.png" alt=""></span>
+        </span>
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="index mono">05</span>
+        <span class="region mono">PERUS</span>
+      </div>
+      <div class="card-body">
+        <h3>Clinica Odontologica Perus</h3>
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Clinica%20Odontologica%20Perus%2C%20R.%20Crispim%20do%20Amaral%2C%20251%20-%20Perus" target="_blank" rel="noopener">
+          <span class="pin"></span>
+          <span class="text">R. Crispim do Amaral, 251 - Perus <span class="route">Ver rota</span></span>
+        </a>
+      </div>
+      <a class="card-cta" href="https://wa.me/5511941168908?text=Gostaria%20de%20um%20agendamento%20com%20a%20Dra%20Joyce%20Milane" target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp na Clinica Odontologica Perus">
+        <span class="logo logo--perus">
+          <img src="logos/logo-perus.png" alt="Logo Clinica Odontologica Perus">
+        </span>
+        <span class="strip">
+          <span class="label">
+            <span class="kicker mono">AGENDE SUA CONSULTA</span>
+            <span class="name">Clinica Odontologica Perus</span>
+          </span>
+          <span class="wa"><img src="icones/whatsapp.png" alt=""></span>
+        </span>
+      </a>
+    </article>
+
+    <p class="units-note mono">TOQUE NO LOGO PARA AGENDAR PELO WHATSAPP</p>
+  </main>
 
   <footer>
-    <div class="wrap">
-      <span class="foot-name">Dra. Joyce Milane</span>
-      <span>Endodontia · São Mateus, Guarulhos, Itaquera e Perus — Grande São Paulo</span>
-      <!-- TODO: substituir pelo número real do WhatsApp -->
-      <span class="foot-phone">WhatsApp: +55 11 90000-0000</span>
+    <div class="instruments instruments--footer" aria-hidden="true"></div>
+    <div class="foot-id">
+      <span class="foot-name display"><span class="dra">Dra</span> Joyce Milane</span>
+      <span class="foot-role mono">ENDODONTISTA | CLÍNICA GERAL</span>
     </div>
   </footer>
-
-  <script>
-    document.querySelectorAll('.unit-action').forEach(function (action) {
-      var phone = action.getAttribute('data-phone');
-      var unit = action.getAttribute('data-unit');
-      var message = 'Olá! Gostaria de agendar uma consulta de endodontia com a Dra. Joyce Milane na unidade ' + unit + '.';
-      action.setAttribute('href', 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message));
-    });
-
-    var igLink = document.getElementById('ig-link');
-    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (igLink && isMobile) {
-      igLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        var webUrl = igLink.href;
-        var appUrl = 'instagram://user?username=drajoycemilane';
-        var hidden = false;
-        function onHide() { hidden = true; }
-        document.addEventListener('visibilitychange', onHide);
-        window.location.href = appUrl;
-        setTimeout(function () {
-          document.removeEventListener('visibilitychange', onHide);
-          if (!hidden) window.location.href = webUrl;
-        }, 1200);
-      });
-    }
-  </script>
-
+</div>
 </body>
 </html>
